@@ -1,5 +1,6 @@
-interface WorkerProps {workerInfo: {id: number, firstName: string, lastName:string,
-     title:string, country: string, city:string, birthDate:Date, imageUrl:string, time: string}}
+import Worker from "../moudels/Worker";
+
+interface WorkerProps {workerInfo: Worker}
 
 const WorkerItem = ({workerInfo}: WorkerProps) => {
     const age: number = new Date().getFullYear() - workerInfo.birthDate.getFullYear();
@@ -47,7 +48,7 @@ const WorkerItem = ({workerInfo}: WorkerProps) => {
                                 <p><center>{age} years old</center></p>
                             </b>
                             <b>
-                                <p><center>{workerInfo.time}</center></p>
+                                <p><center>{workerInfo.localTime}</center></p>
                             </b>
                             <b>
                                 <p><center>Timezone: {workerInfo.city}</center></p>

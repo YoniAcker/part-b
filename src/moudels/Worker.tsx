@@ -7,7 +7,7 @@ interface Worker {
     city:string,
     birthDate:Date,
     imageUrl:string,
-    time?: string
+    localTime?: string
 }
 
 export default Worker;
