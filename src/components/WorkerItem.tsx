@@ -1,9 +1,8 @@
 interface WorkerProps {workerInfo: {id: number, firstName: string, lastName:string,
      title:string, country: string, city:string, birthDate:Date, imageUrl:string, time: string}}
 
-const Worker = ({workerInfo}: WorkerProps) => {
+const WorkerItem = ({workerInfo}: WorkerProps) => {
     const age: number = new Date().getFullYear() - workerInfo.birthDate.getFullYear();
-    console.log(workerInfo.birthDate);
     return (
         <>
             <div className="col-md-4">
@@ -108,4 +107,4 @@ const Worker = ({workerInfo}: WorkerProps) => {
     )
 }
 
-export default Worker;
+export default WorkerItem;
