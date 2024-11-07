@@ -1,4 +1,4 @@
-interface Worker {
+export interface Worker {
   id: number;
   firstName: string;
   lastName: string;
@@ -9,5 +9,3 @@ interface Worker {
   imageUrl: string;
   localTime?: string;
 }
-
-export default Worker;
