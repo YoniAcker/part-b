@@ -1,10 +1,8 @@
-import './App.css'
-import WorkersList from './components/WorkersList'
+import "./App.css";
+import WorkersList from "./components/WorkersList";
 
 function App() {
-  return (
-    <WorkersList/>
-  )
+  return <WorkersList />;
 }
 
-export default App
+export default App;

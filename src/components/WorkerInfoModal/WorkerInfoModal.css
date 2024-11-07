@@ -1,0 +1,17 @@
+#dialogImage {
+    width: 40rem;
+    border-Radius: 4rem;
+    margin-Bottom: 10rem;
+}
+
+#dialogContainer {
+    padding: 7rem;
+}
+
+#dialogHr {
+    margin: 1.5rem;
+}
+
+#workerDesc {
+    font-size: 1.2rem
+}
