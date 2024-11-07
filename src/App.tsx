@@ -1,5 +1,5 @@
 import "./App.css";
-import { WorkerItem } from "./components/WorkerItem";
+import { WorkerItem } from "./components/WorkerItem/WorkerItem";
 
 function App() {
   return (

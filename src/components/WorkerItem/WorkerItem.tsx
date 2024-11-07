@@ -1,13 +1,13 @@
-import { WorkerInfoModal } from "./WorkerInfoModal";
-import { Worker } from "../moudels/Worker";
-import * as React from "react";
+import { WorkerInfoModal } from "../WorkerInfoModal/WorkerInfoModal";
+import { Worker } from "../../moudels/Worker";
+import { useState } from "react";
 
 interface WorkerProps {
   workerInfo: Worker;
 }
 
 export const WorkerItem = ({ workerInfo }: WorkerProps) => {
-  const [open, setOpen] = React.useState<boolean>(false);
+  const [open, setOpen] = useState<boolean>(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -26,10 +26,12 @@ export const WorkerItem = ({ workerInfo }: WorkerProps) => {
             className="avatar"
           />
           <div className="title">
-            <h4>{workerInfo.firstName + " " + workerInfo.lastName}</h4>
+            <h4>
+              {workerInfo.firstName} {workerInfo.lastName}
+            </h4>
             <h5 className="muted regular">{workerInfo.title}</h5>
             <h5 className="muted regular">
-              {workerInfo.city + ", " + workerInfo.country}
+              {workerInfo.city}, {workerInfo.country}
             </h5>
           </div>
           <button onClick={handleClickOpen} className="btn btn-blue-fill">
