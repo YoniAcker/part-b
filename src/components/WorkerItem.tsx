@@ -1,11 +1,21 @@
 import { WorkerInfoModal } from "./WorkerInfoModal";
 import { Worker } from "../moudels/Worker";
+import * as React from "react";
 
 interface WorkerProps {
   workerInfo: Worker;
 }
 
 export const WorkerItem = ({ workerInfo }: WorkerProps) => {
+  const [open, setOpen] = React.useState<boolean>(false);
+
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
+
   return (
     <>
       <div className="col-md-4">
@@ -22,16 +32,16 @@ export const WorkerItem = ({ workerInfo }: WorkerProps) => {
               {workerInfo.city + ", " + workerInfo.country}
             </h5>
           </div>
-          <button
-            data-toggle="modal"
-            data-target="#modal1"
-            className="btn btn-blue-fill"
-          >
+          <button onClick={handleClickOpen} className="btn btn-blue-fill">
             About Me
           </button>
         </div>
       </div>
-      <WorkerInfoModal workerInfo={workerInfo} />
+      <WorkerInfoModal
+        workerInfo={workerInfo}
+        onClose={handleClose}
+        open={open}
+      />
     </>
   );
 };
