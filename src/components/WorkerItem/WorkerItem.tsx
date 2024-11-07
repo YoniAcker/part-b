@@ -31,7 +31,7 @@ export const WorkerItem = ({ workerInfo }: WorkerProps) => {
             </h4>
             <h5 className="muted regular">{workerInfo.title}</h5>
             <h5 className="muted regular">
-              {workerInfo.city}, {workerInfo.country}
+              {`${workerInfo.city} ${workerInfo.country}`}
             </h5>
           </div>
           <button onClick={handleClickOpen} className="btn btn-blue-fill">
