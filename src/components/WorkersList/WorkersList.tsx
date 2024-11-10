@@ -1,9 +1,9 @@
 import { WorkerItem } from "../WorkerItem/WorkerItem";
 import { Worker } from "../../moudels/Worker";
-import { ReactNode, useState } from "react";
+import { WorkersContext } from "../WorkersProvider/WorkersProvider";
+import { useContext } from "react";
 
 export const WorkersList = () => {
-  const [workerItems, setWorkerItems] = useState<ReactNode[]>([]);
   const fetchWorkersList = async () => {
     try {
       const res = await fetch("http://localhost:3030/api/employees", {
@@ -54,20 +54,21 @@ export const WorkersList = () => {
       return worker;
     }
   };
-
-  if (workerItems.length == 0) {
+  const { workersList, setWorkersList } = useContext(WorkersContext);
+  if (workersList.length == 0) {
     fetchWorkersList()
       .then((workersList: Worker[]) => {
         return Promise.all(workersList.map(fetchLocalTime));
       })
-      .then((workersList: Worker[]) => {
-        return workersList.map((worker: Worker) => {
-          return <WorkerItem key={worker.id} workerInfo={worker} />;
-        });
-      })
-      .then((items) => {
-        setWorkerItems(items);
+      .then((list: Worker[]) => {
+        setWorkersList(list);
       });
   }
-  return <div>{workerItems}</div>;
+  return (
+    <div>
+      {workersList.map((worker: Worker) => {
+        return <WorkerItem key={worker.id} workerInfo={worker} />;
+      })}
+    </div>
+  );
 };
