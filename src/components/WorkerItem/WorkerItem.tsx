@@ -26,9 +26,7 @@ export const WorkerItem = ({ workerInfo }: WorkerProps) => {
             className="avatar"
           />
           <div className="title">
-            <h4>
-              {workerInfo.firstName} {workerInfo.lastName}
-            </h4>
+            <h4>{`${workerInfo.firstName} ${workerInfo.lastName}`}</h4>
             <h5 className="muted regular">{workerInfo.title}</h5>
             <h5 className="muted regular">
               {`${workerInfo.city} ${workerInfo.country}`}

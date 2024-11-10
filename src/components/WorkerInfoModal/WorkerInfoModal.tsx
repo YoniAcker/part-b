@@ -11,8 +11,12 @@ interface WorkerProps {
   open: boolean;
 }
 export const WorkerInfoModal = ({ workerInfo, onClose, open }: WorkerProps) => {
-  const age: number =
-    new Date().getFullYear() - workerInfo.birthDate.getFullYear();
+  let age: number | null;
+  try {
+    age = new Date().getFullYear() - parseInt(workerInfo.birthDate.slice(0, 4));
+  } catch (error) {
+    age = null;
+  }
   return (
     <Dialog onClose={onClose} open={open} maxWidth="sm" fullWidth>
       <div id="dialogContainer">
