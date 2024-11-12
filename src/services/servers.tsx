@@ -14,7 +14,7 @@ export const fetchWorkersList = async (): Promise<Worker[]> => {
 };
 
 export const fetchLocalTime = async (worker: Worker): Promise<Worker> => {
-  const X_Api_Key: string | undefined = process.env.X_Api_Key;
+  const X_Api_Key: string | undefined = import.meta.env.VITE_Api_Key;
   if (X_Api_Key == undefined) return worker;
   const latLonRes = await fetch(`${config.latLonUrl}?name=${worker.city}`, {
     method: "get",
