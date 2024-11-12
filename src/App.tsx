@@ -2,6 +2,9 @@ import "./App.css";
 import { WorkersMap } from "./components/WorkersMap/WorkersMap";
 import { WorkersList } from "./components/WorkersList/WorkersList";
 import { WorkersProvider } from "./components/WorkersProvider/WorkersProvider";
+import { config } from "dotenv";
+
+config();
 
 function App() {
   return (
