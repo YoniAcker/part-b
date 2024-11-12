@@ -13,7 +13,7 @@ interface WorkerProps {
 export const WorkerInfoModal = ({ workerInfo, onClose, open }: WorkerProps) => {
   let age: number | null;
   try {
-    age = new Date().getFullYear() - parseInt(workerInfo.birthDate.slice(0, 4));
+    age = new Date().getFullYear() - workerInfo.birthDate.getFullYear();
   } catch (error) {
     age = null;
   }

@@ -5,7 +5,7 @@ export interface Worker {
   title: string;
   country: string;
   city: string;
-  birthDate: string;
+  birthDate: Date;
   imageUrl: string;
   localTime?: string;
 }

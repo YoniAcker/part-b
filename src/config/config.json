@@ -1,0 +1,5 @@
+{
+    "workersUrl": "http://localhost:3030/api/employees",
+    "latLonUrl" : "https://api.api-ninjas.com/v1/city",
+    "localTimeUrl": "https://api.api-ninjas.com/v1/worldtime"
+}

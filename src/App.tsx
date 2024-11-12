@@ -1,5 +1,8 @@
 import "./App.css";
 import { WorkersList } from "./components/WorkersList/WorkersList";
+import { config } from "dotenv";
+
+config();
 
 function App() {
   return (
