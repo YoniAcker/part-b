@@ -8,4 +8,6 @@ export interface Worker {
   birthDate: string;
   imageUrl: string;
   localTime?: string;
+  lat?: number;
+  lon?: number;
 }

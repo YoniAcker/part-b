@@ -32,6 +32,8 @@ export const WorkersList = () => {
         }
       );
       const latLonAns = await latLonRes.json();
+      worker.lat = latLonAns[0].latitude;
+      worker.lon = latLonAns[0].longitude;
       const timeRes = await fetch(
         "https://api.api-ninjas.com/v1/worldtime?lat=" +
           latLonAns[0].latitude +

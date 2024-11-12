@@ -3,9 +3,40 @@ import "leaflet/dist/leaflet.css";
 import "./WorkersMap.css";
 import { useContext } from "react";
 import { WorkersContext } from "../WorkersProvider/WorkersProvider";
+import { Worker } from "../../moudels/Worker";
+
+interface Marker {
+  city: string;
+  workers: string[];
+  lat?: number;
+  lon?: number;
+}
 
 export const WorkersMap = () => {
   const { workersList } = useContext(WorkersContext);
+  workersList.sort((workerA, workerB) =>
+    workerA.city.localeCompare(workerB.city)
+  );
+  const markers: Marker[] = workersList.reduce(
+    (accumulator: Marker[], worker: Worker) => {
+      const fullName = `${worker.firstName} ${worker.lastName}`;
+      if (
+        accumulator.length > 0 &&
+        accumulator[accumulator.length - 1].city == worker.city
+      ) {
+        accumulator[accumulator.length - 1].workers.push(fullName);
+        return accumulator;
+      }
+      accumulator.push({
+        city: worker.city,
+        workers: [fullName],
+        lat: worker.lat,
+        lon: worker.lon,
+      });
+      return accumulator;
+    },
+    []
+  );
   return (
     <MapContainer
       id="mapCon"
