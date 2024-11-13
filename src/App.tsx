@@ -4,7 +4,7 @@ import { WorkersPage } from "./components/WorkersPage/WorkersPage";
 import { WorkersProvider } from "./components/WorkersProvider/WorkersProvider";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
-function App() {
+export const App = () => {
   return (
     <WorkersProvider>
       <BrowserRouter>
@@ -15,6 +15,4 @@ function App() {
       </BrowserRouter>
     </WorkersProvider>
   );
-}
-
-export default App;
+};
