@@ -20,7 +20,7 @@ export const WorkersMap = () => {
       />
       {getMarkers(workersList).map((marker) => {
         return (
-          <Marker position={[marker.lat, marker.lon]}>
+          <Marker key={marker.id} position={[marker.lat, marker.lon]}>
             <Popup>{marker.workers}</Popup>
           </Marker>
         );

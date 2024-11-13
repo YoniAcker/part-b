@@ -1,6 +1,7 @@
 import { Worker } from "../moudels/Worker";
 
 interface Marker {
+  id: number;
   city: string;
   workers: string;
   lat: number;
@@ -8,30 +9,35 @@ interface Marker {
 }
 
 export const getMarkers = (workersList: Worker[]): Marker[] => {
-  workersList.sort((workerA, workerB) =>
+  const sortedList = [...workersList].sort((workerA, workerB) =>
     workerA.city.localeCompare(workerB.city)
   );
-  return workersList.reduce((accumulator: Marker[], worker: Worker) => {
-    console.log(accumulator, worker);
+  return sortedList.reduce((accumulator: Marker[], worker: Worker) => {
     const fullName = `${worker.firstName} ${worker.lastName}`;
-    if (
-      accumulator.length > 0 &&
-      accumulator[accumulator.length - 1].city == worker.city
-    ) {
-      accumulator[accumulator.length - 1].workers = `${
-        accumulator[accumulator.length - 1]
-      }\n${fullName}`;
-      return accumulator;
+    if (worker.lat != undefined && worker.lon != undefined) {
+      if (accumulator.length == 0) {
+        accumulator.push({
+          id: 1,
+          city: worker.city,
+          workers: fullName,
+          lat: worker.lat,
+          lon: worker.lon,
+        });
+      } else if (accumulator[accumulator.length - 1].city == worker.city) {
+        accumulator[accumulator.length - 1].workers = `${
+          accumulator[accumulator.length - 1].workers
+        }\n${fullName}`;
+        return accumulator;
+      } else {
+        accumulator.push({
+          id: accumulator[accumulator.length - 1].id + 1,
+          city: worker.city,
+          workers: fullName,
+          lat: worker.lat,
+          lon: worker.lon,
+        });
+      }
     }
-    if (worker.lat == undefined || worker.lon == undefined) {
-      return accumulator;
-    }
-    accumulator.push({
-      city: worker.city,
-      workers: fullName,
-      lat: worker.lat,
-      lon: worker.lon,
-    });
     return accumulator;
   }, []);
 };

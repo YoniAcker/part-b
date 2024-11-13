@@ -1,17 +1,19 @@
 import "./App.css";
-import { WorkersMap } from "./components/WorkersMap/WorkersMap";
-import { WorkersList } from "./components/WorkersList/WorkersList";
+import { MapPage } from "./components/MapPage/MapPage";
+import { WorkersPage } from "./components/WorkersPage/WorkersPage";
 import { WorkersProvider } from "./components/WorkersProvider/WorkersProvider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
-    <>
-      <h1>Meet The Team</h1>
-      <WorkersProvider>
-        <WorkersList />
-        <WorkersMap />
-      </WorkersProvider>
-    </>
+    <WorkersProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<WorkersPage />}></Route>
+          <Route path="/map" element={<MapPage />}></Route>
+        </Routes>
+      </BrowserRouter>
+    </WorkersProvider>
   );
 }
 
