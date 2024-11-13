@@ -2,20 +2,21 @@ import { WorkerItem } from "../WorkerItem/WorkerItem";
 import { Worker } from "../../moudels/Worker";
 import { WorkersContext } from "../WorkersProvider/WorkersProvider";
 import { useContext } from "react";
-import { fetchWorkersList, fetchLocalTime } from "../../services/servers";
+import { fetchWorkersList } from "../../services/Workers";
+import { fetchLocalTime } from "../../services/LocalTime";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const WorkersList = () => {
-    const { workersList, setWorkersList } = useContext(WorkersContext);
-    if (workersList.length == 0) {
-    const promiseList = fetchWorkersList();
+  const { workersList, setWorkersList } = useContext(WorkersContext);
+  if (workersList.length == 0) {
+    const promiseList: Promise<Worker[]> = fetchWorkersList();
     toast.promise(promiseList, {
       error: "Error when fetching workers list",
     });
     promiseList
-      .then((workersList: Worker[]) => {
-        const timePromise = Promise.all(workersList.map(fetchLocalTime));
+      .then((promiseList): Promise<Worker[]> => {
+        const timePromise = Promise.all(promiseList.map(fetchLocalTime));
         toast.promise(timePromise, {
           error: "Error when fetching local time",
         });
