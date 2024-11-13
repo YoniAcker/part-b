@@ -1,14 +1,16 @@
 import "./App.css";
+import { WorkersMap } from "./components/WorkersMap/WorkersMap";
 import { WorkersList } from "./components/WorkersList/WorkersList";
-import { config } from "dotenv";
-
-config();
+import { WorkersProvider } from "./components/WorkersProvider/WorkersProvider";
 
 function App() {
   return (
     <>
       <h1>Meet The Team</h1>
-      <WorkersList />
+      <WorkersProvider>
+        <WorkersList />
+        <WorkersMap />
+      </WorkersProvider>
     </>
   );
 }
