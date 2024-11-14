@@ -1,9 +1,9 @@
 import { WorkerItem } from "../WorkerItem/WorkerItem";
-import { Worker } from "../../moudels/Worker";
+import { Worker } from "../../moudels/Worker.ts";
 import { WorkersContext } from "../WorkersProvider/WorkersProvider";
 import { useContext } from "react";
-import { fetchWorkersList } from "../../services/Workers";
-import { fetchLocalTime } from "../../services/LocalTime";
+import { fetchWorkersList } from "../../services/Workers.ts";
+import { fetchLocalTime } from "../../services/LocalTime.ts";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
