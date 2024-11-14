@@ -1,7 +1,7 @@
 import { useState, ReactNode, createContext } from "react";
 import { Worker } from "../../moudels/Worker";
-import { fetchWorkersList } from "../../services/Workers";
-import { fetchLocalTime } from "../../services/LocalTime";
+import { fetchWorkersList } from "../../services/Workers.ts";
+import { fetchLocalTime } from "../../services/LocalTime.ts";
 import { toast } from "react-toastify";
 
 interface WorkersProviderProps {
