@@ -1,18 +1,12 @@
 import { Worker } from "../moudels/Worker";
+import { MarkerInfo } from "../moudels/MarkerInfo";
 
-interface Marker {
-  id: number;
-  city: string;
-  workers: string;
-  lat: number;
-  lon: number;
-}
 
-export const getMarkers = (workersList: Worker[]): Marker[] => {
+export const getMarkers = (workersList: Worker[]): MarkerInfo[] => {
   const sortedList = [...workersList].sort((workerA, workerB) =>
     workerA.city.localeCompare(workerB.city)
   );
-  return sortedList.reduce((accumulator: Marker[], worker: Worker) => {
+  return sortedList.reduce((accumulator: MarkerInfo[], worker: Worker) => {
     const fullName = `${worker.firstName} ${worker.lastName}`;
     if (worker.lat != undefined && worker.lon != undefined) {
       if (accumulator.length == 0) {

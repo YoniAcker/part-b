@@ -1,5 +1,7 @@
 {
     "workersUrl": "http://localhost:3030/api/employees",
     "latLonUrl" : "https://api.api-ninjas.com/v1/city",
-    "localTimeUrl": "https://api.api-ninjas.com/v1/worldtime"
+    "localTimeUrl": "https://api.api-ninjas.com/v1/worldtime",
+    "mapAttribution": "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+    "MapUrl": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
 }
