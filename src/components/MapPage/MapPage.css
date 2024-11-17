@@ -1,12 +1,13 @@
 #mapTitle {
-    left: 20rem;
+    text-align: center;
 }
 #teamButton {
     position: relative;
-    left: 20rem;
+    margin: auto;
 }
 #mapPage {
+    width: 100%;
+    display: block;
+    margin: auto;
     text-align: center;
-    margin-left: 30%;
-    margin-right: 30%;
 }

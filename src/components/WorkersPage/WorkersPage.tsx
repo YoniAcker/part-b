@@ -6,13 +6,13 @@ import "./WorkersPage.css";
 export const WorkersPage = () => {
   const nav = useNavigate();
   return (
-    <>
+    <div id="workersPage">
       <h1>Meet The Team</h1>
       <button onClick={() => nav("/map")}>Map</button>
       <WorkersList />
       <div id="bottomMap">
         <WorkersMap />
       </div>
-    </>
+    </div>
   );
 };
