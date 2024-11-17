@@ -1,34 +1,37 @@
 import config from "../config/config.json";
-import { Worker } from "../moudels/Worker";
+import { City } from "../moudels/City";
 
-export const fetchLocalTime = async (worker: Worker): Promise<Worker> => {
-  const X_Api_Key: string | undefined = import.meta.env.VITE_Api_Key;
-  if (X_Api_Key == undefined) return worker;
-  const latLonRes = await fetch(`${config.latLonUrl}?name=${worker.city}`, {
+export const fetchLocalTime = async (city: City): Promise<City> => {
+  const ApiKey: string | undefined = import.meta.env.VITE_API_KEY;
+  if (!ApiKey) throw new Error("Can't fatch Local time from server");
+  const latLonRes = await fetch(`${config.latLonUrl}?name=${city.name}`, {
     method: "get",
     headers: {
       "Content-Type": "application/json",
-      "X-Api-Key": X_Api_Key,
+      "X-Api-Key": ApiKey,
     },
   });
-  if (latLonRes.status != 200) {
-    return worker;
+  if (latLonRes.status !== 200) {
+    throw new Error("Can't fatch Local time from server");
   }
   const latLonAns = await latLonRes.json();
-  worker.lat = latLonAns[0].latitude;
-  worker.lon = latLonAns[0].longitude;
+  city.lat = latLonAns[0].latitude;
+  city.lon = latLonAns[0].longitude;
   const timeRes = await fetch(
     `${config.localTimeUrl}?lat=${latLonAns[0].latitude}&lon=${latLonAns[0].longitude}`,
     {
       method: "get",
       headers: {
         "Content-Type": "application/json",
-        "X-Api-Key": X_Api_Key,
+        "X-Api-Key": ApiKey,
       },
     }
   );
+  if (timeRes.status !== 200) {
+    throw new Error("Can't fatch Local time from server");
+  }
   const timeAns = await timeRes.json();
-  const time: string =
-    timeAns.hour + ":" + timeAns.minute + ":" + timeAns.second;
-  return { ...worker, localTime: time };
+  const time: string = `${timeAns.hour} : ${timeAns.minute} : ${timeAns.second}`;
+  city.localTime = time;
+  return city;
 };

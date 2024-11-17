@@ -1,15 +1,8 @@
 import { Worker } from "../moudels/Worker";
 
-interface workerWithStringBD {
-  id: number;
-  firstName: string;
-  lastName: string;
-  title: string;
-  country: string;
-  city: string;
-  birthDate: string;
-  imageUrl: string;
-  localTime?: string;
+type workerWithoutBD = Omit<Worker, "birthDate">;
+interface workerWithStringBD extends workerWithoutBD {
+  birthDate: Date;
 }
 
 export const changeToDate = (worker: workerWithStringBD): Worker => {

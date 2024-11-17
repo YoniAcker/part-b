@@ -9,6 +9,9 @@ export const fetchWorkersList = async (): Promise<Worker[]> => {
       "Content-Type": "application/json",
     },
   });
+  if (res.status != 200) {
+    throw new Error("Can't fatch workers from server");
+  }
   const list = await res.json();
   return list.map(changeToDate);
 };

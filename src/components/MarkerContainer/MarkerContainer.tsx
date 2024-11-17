@@ -1,14 +1,21 @@
 import { Marker, Popup } from "react-leaflet";
-import { MarkerInfo } from "../../moudels/MarkerInfo";
+import { City } from "../../moudels/City";
 
 interface MarkerContainerProps {
-  marker: MarkerInfo;
+  city: City;
 }
 
-export const MarkerContainer = ({ marker }: MarkerContainerProps) => {
+export const MarkerContainer = ({ city }: MarkerContainerProps) => {
+  const workersNames: string[] = city.workers.map(
+    (worker) => `${worker.firstName} ${worker.lastName}`
+  );
   return (
-    <Marker position={[marker.lat, marker.lon]}>
-      <Popup>{marker.workers}</Popup>
-    </Marker>
+    <div>
+      {city.lat && city.lon ? (
+        <Marker position={[city.lat, city.lon]}>
+          <Popup>{workersNames.join(",")}</Popup>
+        </Marker>
+      ) : null}
+    </div>
   );
 };
