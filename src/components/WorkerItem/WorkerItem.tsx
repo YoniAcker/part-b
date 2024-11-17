@@ -1,12 +1,14 @@
 import { WorkerInfoModal } from "../WorkerInfoModal/WorkerInfoModal";
 import { Worker } from "../../moudels/Worker";
 import { useState } from "react";
+import "./WorkerItem.css";
 
 interface WorkerProps {
   workerInfo: Worker;
+  localTime: string | undefined;
 }
 
-export const WorkerItem = ({ workerInfo }: WorkerProps) => {
+export const WorkerItem = ({ workerInfo, localTime }: WorkerProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   const handleClickOpen = () => {
@@ -26,9 +28,7 @@ export const WorkerItem = ({ workerInfo }: WorkerProps) => {
             className="avatar"
           />
           <div className="title">
-            <h4>
-              {workerInfo.firstName} {workerInfo.lastName}
-            </h4>
+            <h4>{`${workerInfo.firstName} ${workerInfo.lastName}`}</h4>
             <h5 className="muted regular">{workerInfo.title}</h5>
             <h5 className="muted regular">
               {`${workerInfo.city} ${workerInfo.country}`}
@@ -41,6 +41,7 @@ export const WorkerItem = ({ workerInfo }: WorkerProps) => {
       </div>
       <WorkerInfoModal
         workerInfo={workerInfo}
+        localTime={localTime}
         onClose={handleClose}
         open={open}
       />

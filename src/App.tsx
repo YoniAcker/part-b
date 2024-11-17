@@ -1,22 +1,22 @@
 import "./App.css";
-import { WorkerItem } from "./components/WorkerItem/WorkerItem";
+import { MapPage } from "./components/MapPage/MapPage";
+import { WorkersPage } from "./components/WorkersPage/WorkersPage";
+import { CitiesProvider } from "./components/CitiesProvider/CitiesProvider";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 
-function App() {
+export const App = () => {
   return (
-    <WorkerItem
-      workerInfo={{
-        id: 1,
-        firstName: "Chandler",
-        lastName: "Bing",
-        title: "something",
-        country: "USA",
-        city: "New York",
-        birthDate: new Date("1995-03-17"),
-        imageUrl: "../download.jpeg",
-        localTime: "12:33:15",
-      }}
-    />
+    <>
+      <ToastContainer />
+      <CitiesProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<WorkersPage />}></Route>
+            <Route path="/map" element={<MapPage />}></Route>
+          </Routes>
+        </BrowserRouter>
+      </CitiesProvider>
+    </>
   );
-}
-
-export default App;
+};

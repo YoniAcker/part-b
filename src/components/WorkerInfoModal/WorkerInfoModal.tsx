@@ -7,12 +7,22 @@ import "./WorkerInfoModal.css";
 
 interface WorkerProps {
   workerInfo: Worker;
+  localTime: string | undefined;
   onClose: () => void;
   open: boolean;
 }
-export const WorkerInfoModal = ({ workerInfo, onClose, open }: WorkerProps) => {
-  const age: number =
-    new Date().getFullYear() - workerInfo.birthDate.getFullYear();
+export const WorkerInfoModal = ({
+  workerInfo,
+  localTime,
+  onClose,
+  open,
+}: WorkerProps) => {
+  let age: number | null;
+  try {
+    age = new Date().getFullYear() - workerInfo.birthDate.getFullYear();
+  } catch (error) {
+    age = null;
+  }
   return (
     <Dialog onClose={onClose} open={open} maxWidth="sm" fullWidth>
       <div id="dialogContainer">
@@ -26,9 +36,13 @@ export const WorkerInfoModal = ({ workerInfo, onClose, open }: WorkerProps) => {
         <Typography variant="h5" gutterBottom>
           {age} years old
         </Typography>
-        <Typography variant="h5" gutterBottom>
-          Local Time: {workerInfo.localTime}
-        </Typography>
+        {localTime ? (
+          <Typography variant="h5" gutterBottom>
+            {"  "}
+            Local Time: {localTime}
+            {"  "}
+          </Typography>
+        ) : null}
         <Typography variant="h5" gutterBottom>
           Timezone: {workerInfo.city}
         </Typography>
