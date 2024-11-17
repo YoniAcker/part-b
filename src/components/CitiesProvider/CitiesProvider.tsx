@@ -46,7 +46,7 @@ export const CitiesProvider = ({ children }: CitiesProviderProps) => {
   return (
     <CitiesContext.Provider
       value={{
-        citiesList: citiesList,
+        citiesList,
       }}
     >
       {children}

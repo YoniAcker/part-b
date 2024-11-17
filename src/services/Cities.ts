@@ -6,11 +6,11 @@ export const getCities = (workersList: Worker[]): City[] => {
   workersList.forEach((worker: Worker) => {
     if (worker.city in cities) cities[worker.city].workers.push(worker);
     else {
-      const marker: City = {
+      const city: City = {
         name: worker.city,
         workers: [worker],
       };
-      cities[worker.city] = marker;
+      cities[worker.city] = city;
     }
   });
   return Object.values(cities);

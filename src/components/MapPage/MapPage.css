@@ -5,3 +5,8 @@
     position: relative;
     left: 20rem;
 }
+#mapPage {
+    text-align: center;
+    margin-left: 30%;
+    margin-right: 30%;
+}
