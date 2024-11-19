@@ -34,7 +34,11 @@ export const WorkerItem = ({ workerInfo, localTime }: WorkerProps) => {
               {`${workerInfo.city} ${workerInfo.country}`}
             </h5>
           </div>
-          <button onClick={handleClickOpen} className="btn btn-blue-fill">
+          <button
+            data-testid={`${workerInfo.lastName} button`}
+            onClick={handleClickOpen}
+            className="btn btn-blue-fill"
+          >
             About Me
           </button>
         </div>
