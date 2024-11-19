@@ -6,12 +6,10 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { City } from "../../moudels/City.ts";
 import { getCities } from "../../services/Cities.ts";
+import { context } from "../../moudels/context.ts";
 
 interface CitiesProviderProps {
   children: ReactNode;
-}
-interface context {
-  citiesList: City[];
 }
 
 export const CitiesContext = createContext<context>({

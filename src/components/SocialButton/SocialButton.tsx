@@ -1,13 +1,20 @@
 interface SocialButtonProps {
   siteUrl: string;
   imageUrl: string;
+  alt: string;
 }
 
-export const SocialButton = ({ siteUrl, imageUrl }: SocialButtonProps) => {
+export const SocialButton = ({ siteUrl, imageUrl, alt }: SocialButtonProps) => {
   return (
     <li>
       <a href={siteUrl} target="_blank">
-        <img src={imageUrl} className="icon" height="40rem" width="40rem" />
+        <img
+          src={imageUrl}
+          alt={alt}
+          className="icon"
+          height="40rem"
+          width="40rem"
+        />
       </a>
     </li>
   );
