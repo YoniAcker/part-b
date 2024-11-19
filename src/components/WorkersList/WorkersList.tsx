@@ -2,10 +2,10 @@ import { WorkerItem } from "../WorkerItem/WorkerItem";
 import { useContext } from "react";
 import { CitiesContext } from "../CitiesProvider/CitiesProvider";
 import "react-toastify/dist/ReactToastify.css";
-import { context } from "../../moudels/context.ts";
+import { Context } from "../../moudels/Context.ts";
 
 export const WorkersList = () => {
-  const { citiesList }: context = useContext(CitiesContext);
+  const { citiesList }: Context = useContext(CitiesContext);
 
   return (
     <div className="row justify-content-center">

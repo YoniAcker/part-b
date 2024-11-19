@@ -9,6 +9,7 @@ export const SocialButton = ({ siteUrl, imageUrl, alt }: SocialButtonProps) => {
     <li>
       <a href={siteUrl} target="_blank">
         <img
+          data-testid={`${alt} button`}
           src={imageUrl}
           alt={alt}
           className="icon"

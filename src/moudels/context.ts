@@ -1,5 +1,5 @@
 import { City } from "./City";
 
-export interface context {
+export interface Context {
   citiesList: City[];
 }
