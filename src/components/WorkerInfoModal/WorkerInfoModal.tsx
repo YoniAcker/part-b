@@ -37,7 +37,7 @@ export const WorkerInfoModal = ({
           {age} years old
         </Typography>
         {localTime ? (
-          <Typography variant="h5" gutterBottom>
+          <Typography data-testid="loaclTime" variant="h5" gutterBottom>
             {"  "}
             Local Time: {localTime}
             {"  "}
